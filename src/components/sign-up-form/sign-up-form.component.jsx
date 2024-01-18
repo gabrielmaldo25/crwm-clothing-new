@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  createAuthUserWithEmailAndpassword,
+  createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
@@ -34,7 +34,7 @@ const SignUpForm = () => {
       alert("Passwords do not match");
     }
     try {
-      const { user } = await createAuthUserWithEmailAndpassword(
+      const { user } = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
