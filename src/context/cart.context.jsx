@@ -1,4 +1,5 @@
 import { createContext, useEffect, useReducer, useState } from "react";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
@@ -97,18 +98,17 @@ export const CartProvider = ({ children }) => {
       0
     );
 
-    dispatch({
-      type: CART_ACTION_TYPES.SET_CART_ITEMS,
-      payload: {
+    dispatch(
+      createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
         cartItems: newCartItems,
         cartCount: newCartCount,
         cartTotal: newCartTotal,
-      },
-    });
+      })
+    );
   };
 
   const setCartIsOpen = () =>
-    dispatch({ type: CART_ACTION_TYPES.SET_CART_OPEN });
+    dispatch(createAction(CART_ACTION_TYPES.SET_CART_OPEN));
 
   const addItemToCart = (productToAdd) => {
     updateCartItemsReducer(addCartItem(cartItems, productToAdd));
