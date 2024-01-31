@@ -3,21 +3,22 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.scss";
 
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { CartProvider } from "./context/cart.context.jsx";
 import { CategoriesProvider } from "./context/categories.context.jsx";
-import { UserProvider } from "./context/user.context.jsx";
+import { store } from "./store/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
+    <Provider store={store}>
+      <BrowserRouter>
         <CategoriesProvider>
           <CartProvider>
             <App />
           </CartProvider>
         </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
